@@ -7,7 +7,7 @@ A GAN is a class of machine learning frameworks designed by Ian Goodfellow and h
 
 <img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/digit-demo.gif" width="510">
 
-Generate images of hand-written digits using GANs
+The gif above showcases some generated samples from the PyTorch based GAN in the notebook.
 
 ## How does it work?
 Two neural networks, the Generator(G) and the Discriminator(D) are pitted against one another and trained simultaneously. But what are they aiming to accomplish?
