@@ -9,7 +9,7 @@ A GAN is a class of machine learning frameworks designed by Ian Goodfellow and h
 
 Generate images of hand-written digits using GANs
 
-## Well, How does it work?
+## How does it work?
 Two neural networks, the Generator(G) and the Discriminator(D) are pitted against one another and trained simultaneously. But what are they aiming to accomplish?
   * The **Discriminator** aims to distinguish between real and generated samples. 
   * The **Generator** aims to produce real-looking samples/images to fool the Discriminator.
