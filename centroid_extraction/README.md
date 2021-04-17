@@ -56,7 +56,7 @@ e.g. kernel for diameter 4
 The purpose of above method is to implement a sliding window over the image which adds the pixel intensity of 
 all other pixels in the window to the center pixel. Hence, locally enhancing it for a fixed diameter range.
 
-If the input image was of dimensions (H,W) the output image would be of dimension (H,W,S_<sub>max</sub>).
+If the input image was of dimensions (H,W) the output image would be of dimension (H,W,S<sub>max</sub>).
 We have locally enhanced image w.r.t. every fixed diameter in ls stacked in a 3D array.
 
 To get final locally enhanced image we would take the maximum over 3rd dimension, the output obtained is as follows:
@@ -69,7 +69,7 @@ To extract centroids from the locally enhanced image, we would select a candidat
 - Replace the value of pixel with intensity higher than center pixel with 1 else 0.
 - Take the sum of the window and assign it to the center pixel corresponding to that window in the image.
 
-Now, on the $R_mat$ (region matrix) we would consider a threshold(say 0.99) and filter out redundant centers. from the $R_mat$. 
+Now, on the R<sub>mat</sub> (region matrix) we would consider a threshold(say 0.99) and filter out redundant centers. from the R<sub>mat</sub>. 
 
 We would obtain first set of cwentroids at the end of these steps as follows:
 
