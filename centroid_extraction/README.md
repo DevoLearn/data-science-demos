@@ -1,10 +1,8 @@
 # Centroid Extraction from EPIC dataset
 
-Centroids depict many important information in study of C. Elegans. Centroids can help in understanding the structure of worm, 
-track the location of different cells during embryogenesis and much more.
+Centroids depict many important information in study of _C. elegans_. Centroids can help in understanding the structure of the embryo, track the location of different cells during embryogenesis and much more.
 
-This tutorial explains one of the approaches to extract centroids by image manipulation. Feel free to experiment on the 
-implementation with the colab notebook linked below.
+This tutorial explains one approaches to extract centroids by image manipulation. Feel free to experiment on the implementation with the CoLab notebook linked below.  
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZUOC01kuNiI9BkfhJQpEjg2v9XVJUMqM?usp=sharing)
 
@@ -67,20 +65,17 @@ To get final locally enhanced image we would take the maximum over 3rd dimension
 
 ### Step 3: Extracting Centroid
 
-To extract centroids from the locally enhanced image, we would select a candidate region of fixed size (say 4). Again we would implement sliding window 
-technique using unfold operation for efficiency. And generate a region matrix with the help of following operation in each window:
+To extract centroids from the locally enhanced image, we would select a candidate region of fixed size (say 4). Again we would implement sliding window technique using unfold operation for efficiency. And generate a region matrix with the help of following operation in each window:
 - Replace the value of pixel with intensity higher than center pixel with 1 else 0.
 - Take the sum of the window and assign it to the center pixel corresponding to that window in the image.
 
-Now, on the Rmat(region matrix) we would consider a threshold(say 0.99) and filter out redundant centers. from the Rmat. 
+Now, on the $R_mat$ (region matrix) we would consider a threshold(say 0.99) and filter out redundant centers. from the $R_mat$. 
 
 We would obtain first set of cwentroids at the end of these steps as follows:
 
 ![image](https://user-images.githubusercontent.com/57054296/114991212-f82f0680-9eb6-11eb-83d9-f96263ae9d0e.png)
 
-As we can see there are too many centroids which does not represent any nuclei. This is because of the fact that even after supressing noise
-it is not completely gone, as a matter of fact that we are doing every operation using a candidate region or a neighbourhood. This noise 
-acts as maxima in some candidates and we obtain it to be centroid. 
+As we can see there are too many centroids which does not represent any nuclei. This is because of the fact that even after supressing noise it is not completely gone, as a matter of fact that we are doing every operation using a candidate region or a neighbourhood. This noise acts as maxima in some candidates and we obtain it to be centroid. 
 
 ### Step 4: Refining the centroids
 
@@ -96,24 +91,21 @@ To refine out unnecessary centroids we would map each centroid obtained onto loc
 
 Output of the algorithm would be a shape matrix with dimension similar to the orignal image consisting shape score of each centroids.
 
-The shape scores of the center which truly represent nucleus will be higher than once generated due to noise, due to the fact that 
-noise will have less no of intense pixels surrounding it than the true centers. 
+The shape scores of the cell body centroid will be higher than once generated due to noise, due to the fact that noise will have less no of intense pixels surrounding it than the true centers. 
 
-With the help of shape score we will also filter out few centroid due to fragmented nuclie, but not all.
+With the help of shape score we will also filter out few centroid due to fragmented nuclei, but not all.
 
-By taking a shape threshold slightly less than the maximum shape score we obtain the following output:
+By taking a shape threshold slightly less than the maximum shape score, we obtain the following output:
 
 ![image](https://user-images.githubusercontent.com/57054296/114993419-6d034000-9eb9-11eb-85b6-3ed1ebf87cb8.png)
 
 ### Step 5: Combining fragmented centers
 
-There might be cases where one might get multiple centroids really close enough to each other for a single nucleus.
-To deal with such conditions we can calculate euclidean distance between each pair of centroids and eliminate them with the help of
-a minimum threshold distance.
+There might be cases where one might get multiple centroids really close enough to each other for a single cell body. To deal with such conditions we can calculate Euclidean distance between each pair of centroids and eliminate them with the help of a minimum threshold distance.
 
 ### Final Output
 ![image](https://user-images.githubusercontent.com/57054296/114994421-60331c00-9eba-11eb-9cb3-fc1ba09c48f5.png)
 
 # References
+Bashar, M.K., Komatsu, K., Fujimori, T., and Kobayashi, T.J. (2012). [Automatic Extraction of Nuclei Centroids of Mouse Embryonic Cells from Fluorescence Microscopy Images](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0035550). _PLoS One_ 7(5), e35550. doi:10.1371/journal.pone.0035550.
 
-https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0035550
