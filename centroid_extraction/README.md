@@ -56,7 +56,7 @@ e.g. kernel for diameter 4
 The purpose of above method is to implement a sliding window over the image which adds the pixel intensity of 
 all other pixels in the window to the center pixel. Hence, locally enhancing it for a fixed diameter range.
 
-If the input image was of dimensions (H,W) the output image would be of dimension (H,W,S_max).
+If the input image was of dimensions (H,W) the output image would be of dimension (H,W,S_<sub>max</sub>).
 We have locally enhanced image w.r.t. every fixed diameter in ls stacked in a 3D array.
 
 To get final locally enhanced image we would take the maximum over 3rd dimension, the output obtained is as follows:
