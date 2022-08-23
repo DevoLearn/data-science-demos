@@ -1,1 +1,7 @@
 .venv/
+.vscode/
+centroid/
+centroids.csv
+sample_preds/
+generated_images/
+segmented_images/
